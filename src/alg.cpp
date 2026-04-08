@@ -21,7 +21,7 @@ bool checkPrime(uint64_t val) {
   return true;
 }
 
-uint64_t nPrime(uint64_t n) { // number
+uint64_t nPrime(uint64_t n) { // num
   if (n == 0) {
     throw std::invalid_argument("n-invalid");
   }
