@@ -55,8 +55,3 @@ TEST(PrimeTest, SumPrime) {
     EXPECT_EQ(sumPrime(20), 77);    // 2+3+5+7+11+13+17+19 = 77
     EXPECT_EQ(sumPrime(30), 129);   // 2+3+5+7+11+13+17+19+23+29 = 129
 }
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
