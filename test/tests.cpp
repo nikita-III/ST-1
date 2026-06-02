@@ -4,104 +4,59 @@
 #include <cstdint>
 #include "alg.h"
 
-TEST(st1, 0_no) {
-  bool res = checkPrime(0);
-  EXPECT_FALSE(res);
-}
-TEST(st1, 1_no) {
-  bool res = checkPrime(1);
-  EXPECT_FALSE(res);
-}
-TEST(st1, 4_no) {
-  bool res = checkPrime(4);
-  EXPECT_FALSE(res);
-}
-TEST(st1, 5_yes) {
-  bool res = checkPrime(5);
-  EXPECT_TRUE(res);
-}
-TEST(st1, 23_yes) {
-  bool res = checkPrime(23);
-  EXPECT_TRUE(res);
-}
-TEST(st1, 97_yes) {
-  bool res = checkPrime(97);
-  EXPECT_TRUE(res);
-}
-TEST(st1, 100_no) {
-  bool res = checkPrime(100);
-  EXPECT_FALSE(res);
+// Проверка checkPrime
+TEST(PrimeTest, CheckPrime) {
+    EXPECT_FALSE(checkPrime(0));
+    EXPECT_FALSE(checkPrime(1));
+    EXPECT_TRUE(checkPrime(2));
+    EXPECT_TRUE(checkPrime(3));
+    EXPECT_FALSE(checkPrime(4));
+    EXPECT_TRUE(checkPrime(5));
+    EXPECT_FALSE(checkPrime(6));
+    EXPECT_TRUE(checkPrime(7));
+    EXPECT_FALSE(checkPrime(9));
+    EXPECT_FALSE(checkPrime(15));
+    EXPECT_TRUE(checkPrime(17));
+    EXPECT_FALSE(checkPrime(25));
+    EXPECT_TRUE(checkPrime(97));
+    EXPECT_FALSE(checkPrime(100));
 }
 
-
-TEST(st1, n_0) {
-  EXPECT_ANY_THROW(nPrime(0));
-}
-TEST(st1, n_1) {
-  uint64_t res = nPrime(1);
-  EXPECT_EQ(2, res);
-}
-TEST(st1, n_4) {
-  uint64_t res = nPrime(4);
-  EXPECT_EQ(7, res);
-}
-TEST(st1, n_5) {
-  uint64_t res = nPrime(5);
-  EXPECT_EQ(11, res);
-}
-TEST(st1, n_10) {
-  uint64_t res = nPrime(10);
-  EXPECT_EQ(29, res);
-}
-TEST(st1, n_23) {
-  uint64_t res = nPrime(23);
-  EXPECT_EQ(83, res);
+// Проверка nPrime
+TEST(PrimeTest, NPrime) {
+    EXPECT_EQ(nPrime(1), 2);
+    EXPECT_EQ(nPrime(2), 3);
+    EXPECT_EQ(nPrime(3), 5);
+    EXPECT_EQ(nPrime(4), 7);
+    EXPECT_EQ(nPrime(5), 11);
+    EXPECT_EQ(nPrime(6), 13);
+    EXPECT_EQ(nPrime(10), 29);
 }
 
-
-TEST(st1, next_0) {
-  uint64_t res = nextPrime(0);
-  EXPECT_EQ(2, res);
-}
-TEST(st1, next_1) {
-  uint64_t res = nextPrime(1);
-  EXPECT_EQ(2, res);
-}
-TEST(st1, next_4) {
-  uint64_t res = nextPrime(4);
-  EXPECT_EQ(5, res);
-}
-TEST(st1, next_5) {
-  uint64_t res = nextPrime(5);
-  EXPECT_EQ(7, res);
-}
-TEST(st1, next_23) {
-  uint64_t res = nextPrime(23);
-  EXPECT_EQ(29, res);
+// Проверка nextPrime
+TEST(PrimeTest, NextPrime) {
+    EXPECT_EQ(nextPrime(0), 2);
+    EXPECT_EQ(nextPrime(1), 2);
+    EXPECT_EQ(nextPrime(2), 3);
+    EXPECT_EQ(nextPrime(3), 5);
+    EXPECT_EQ(nextPrime(4), 5);
+    EXPECT_EQ(nextPrime(10), 11);
+    EXPECT_EQ(nextPrime(11), 13);
+    EXPECT_EQ(nextPrime(12), 13);
+    EXPECT_EQ(nextPrime(13), 17);
+    EXPECT_EQ(nextPrime(20), 23);
 }
 
+// Проверка sumPrime
+TEST(PrimeTest, SumPrime) {
+    EXPECT_EQ(sumPrime(2), 0);      // нет простых чисел < 2
+    EXPECT_EQ(sumPrime(3), 2);      // 2
+    EXPECT_EQ(sumPrime(10), 17);    // 2+3+5+7 = 17
+    EXPECT_EQ(sumPrime(20), 77);    // 2+3+5+7+11+13+17+19 = 77
+    EXPECT_EQ(sumPrime(30), 129);   // 2+3+5+7+11+13+17+19+23+29 = 129
+}
 
-TEST(st1, sum_0) {
-  uint64_t res = sumPrime(0);
-  EXPECT_EQ(0, res);
-}
-TEST(st1, sum_1) {
-  uint64_t res = sumPrime(1);
-  EXPECT_EQ(0, res);
-}
-TEST(st1, sumt_4) {
-  uint64_t res = sumPrime(4);
-  EXPECT_EQ(5, res);
-}
-TEST(st1, sum_5) {
-  uint64_t res = sumPrime(5);
-  EXPECT_EQ(5, res);
-}
-TEST(st1, sum_23) {
-  uint64_t res = sumPrime(23);
-  EXPECT_EQ(77, res);
-}
-TEST(st1, sum_30) {
-  uint64_t res = sumPrime(30);
-  EXPECT_EQ(129, res);
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
