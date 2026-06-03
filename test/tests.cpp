@@ -8,17 +8,35 @@
 TEST(PrimeTest, CheckPrime) {
     EXPECT_FALSE(checkPrime(0));
     EXPECT_FALSE(checkPrime(1));
+}
+
+TEST(PrimeTest, CheckPrime1) {
     EXPECT_TRUE(checkPrime(2));
     EXPECT_TRUE(checkPrime(3));
+}
+
+TEST(PrimeTest, CheckPrime2) {
     EXPECT_FALSE(checkPrime(4));
     EXPECT_TRUE(checkPrime(5));
     EXPECT_FALSE(checkPrime(6));
+}
+
+TEST(PrimeTest, CheckPrime3) {
     EXPECT_TRUE(checkPrime(7));
     EXPECT_FALSE(checkPrime(9));
+}
+
+TEST(PrimeTest, CheckPrime4) {
     EXPECT_FALSE(checkPrime(15));
     EXPECT_TRUE(checkPrime(17));
+}
+
+TEST(PrimeTest, CheckPrime5) {
     EXPECT_FALSE(checkPrime(25));
     EXPECT_TRUE(checkPrime(97));
+}
+
+TEST(PrimeTest, CheckPrime6) {
     EXPECT_FALSE(checkPrime(100));
 }
 
@@ -54,4 +72,9 @@ TEST(PrimeTest, SumPrime) {
     EXPECT_EQ(sumPrime(10), 17);    // 2+3+5+7 = 17
     EXPECT_EQ(sumPrime(20), 77);    // 2+3+5+7+11+13+17+19 = 77
     EXPECT_EQ(sumPrime(30), 129);   // 2+3+5+7+11+13+17+19+23+29 = 129
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
